@@ -66,10 +66,10 @@ public class Metro {
     }
 
     public Optional<MetroStation> getMetroLine(String lineName) {
-        getLine(lineName).ifPresentOrElse(
-                AbstractLine::getHead
-                ,Optional::empty
-        );
+        Optional<MetroLine> line = getLine(lineName);
+        return line.isPresent() 
+                ? Optional.of(line.get().getHead()) 
+                : Optional.empty();
     }
 
     public void addStation(String lineName, String stationName, double time, boolean isHead) {
@@ -80,6 +80,12 @@ public class Metro {
                 line.add(stationName, time);
             }
         });
+    }
+
+    public void connectStations(String lineName, String stationName, String lineName2, String stationName2) {
+    }
+
+    public void removeStation(String lineName, String stationName) {
     }
 
     // find a good implementation of the transfer operation.

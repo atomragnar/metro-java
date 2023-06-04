@@ -9,7 +9,7 @@ import java.util.Deque;
 public class PathPrinter extends ConsolePrinter {
 
     private static final String TRANSITION = "Transition to line %s";
-    void printPath(Deque<NodeWrapper<MetroStation, String, String>> path, String targetDestination, TraversalAlgorithm algorithm) {
+    public void printPath(Deque<NodeWrapper<MetroStation, String, String>> path, String targetDestination, TraversalAlgorithm algorithm) {
         if (path.isEmpty()) {
             System.out.println("There is no path to the destination");
             return;
