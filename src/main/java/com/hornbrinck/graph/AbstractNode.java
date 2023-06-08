@@ -52,7 +52,7 @@ public abstract class AbstractNode<T extends Comparable<T>, V extends Comparable
         Edge<T, V> parallelEdge = new Edge<>();
         parallelEdge.setTargetNode(parallel);
         // TODO here I will need to adjust with the time cost of transfer
-        parallelEdge.setWeight(0.0);
+        parallelEdge.setWeight(5.0);
         parallelEdge.setRelationShip(GraphRelationship.PARALLEL);
         parallelEdges.add(parallelEdge);
     }
@@ -67,6 +67,12 @@ public abstract class AbstractNode<T extends Comparable<T>, V extends Comparable
         return prevEdges.isEmpty()
                 ? new ArrayList<>()
                 : prevEdges.stream().map(Edge::getTargetNode).toList();
+    }
+
+    public List<AbstractNode<T, V>> getPrevAndNextNodes() {
+        List<AbstractNode<T, V>> list = new ArrayList<>(getPrevNodes());
+        list.addAll(getNextNodes());
+        return list;
     }
 
     public List<AbstractNode<T, V>> getParallelNodes() {

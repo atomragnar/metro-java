@@ -132,13 +132,13 @@ public abstract class AbstractLine<N extends AbstractNode<T, String>, T extends 
 
         visited.add(current);
 
-        List<N> nextNodes = (List<N>) current.getNextNodes();
+        List<N> lineNodes = (List<N>) current.getPrevAndNextNodes();
 
-        if (nextNodes.isEmpty()) {
+        if (lineNodes.isEmpty()) {
             return Optional.empty();
         }
 
-        for (N node : nextNodes) {
+        for (N node : lineNodes) {
             if (!visited.contains(node)) {
                 Optional<N> nOptional = getNode(data, node, visited);
                 if (nOptional.isPresent()) {

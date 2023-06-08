@@ -23,6 +23,7 @@ public class NodeWrapper <N extends AbstractNode<T, V>, T extends Comparable<T>,
         this.distance = Double.MAX_VALUE;
         this.setWeight(node.getWeight());
         this.setAssociation(node.getAssociation());
+        this.setData(node.getData());
     }
 
     public void addEdgeWrapper(EdgeWrapper<N, T, V> edgeWrapper) {

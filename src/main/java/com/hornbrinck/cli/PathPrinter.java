@@ -84,7 +84,7 @@ public class PathPrinter extends ConsolePrinter {
             //current.getAdjacencyList().forEach((edge) -> out(edge.getKey() + " " + edge.getWeight() + " " + edge.getTargetNode().getData()));
         }
 
-        out(String.format("Total: %d minutes", totalTime));
+        out(String.format("Total: %d minutes", (long) totalTime));
 
     }
 
