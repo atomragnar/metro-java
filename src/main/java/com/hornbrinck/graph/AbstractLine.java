@@ -62,7 +62,7 @@ public abstract class AbstractLine<N extends AbstractNode<T, String>, T extends 
         );
     }
 
-    private void add(N newNode, N nodeBefore) {
+    public void add(N newNode, N nodeBefore) {
         addAfterNodeAction(newNode, nodeBefore);
     }
 
@@ -148,6 +148,24 @@ public abstract class AbstractLine<N extends AbstractNode<T, String>, T extends 
         }
         return Optional.empty();
     }
+
+    public void remove(T data) {
+        getNode(data).ifPresent(this::remove);
+    }
+
+    public void remove(AbstractNode<T, String> node) {
+        List<AbstractNode<T, String>> prevNodes = node.getPrevNodes();
+        List<AbstractNode<T, String>> nextNodes = node.getNextNodes();
+        for (AbstractNode<T, String> prev : prevNodes) {
+            for (AbstractNode<T, String> next : nextNodes) {
+                prev.addNext(next);
+                next.addPrev(prev);
+                prev.removeEdge(node, GraphRelationship.NEXT);
+                next.removeEdge(node, GraphRelationship.PREVIOUS);
+            }
+        }
+    }
+
 
     private boolean compareNodeData(T data, N current) {
         return Objects.equals(data, current.getData());
