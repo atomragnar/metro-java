@@ -19,6 +19,7 @@ public class LinePrinter extends ConsolePrinter {
         //
         //
         //
+
         Queue<AbstractNode<String, String>> queue = new ArrayDeque<>();
         queue.add(current);
         HashSet<AbstractNode<String, String>> set = new HashSet<>();

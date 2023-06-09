@@ -9,9 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String[] args1 = new String[] {"C:\\Files\\hyperskill\\HyperMetro\\HyperMetro (1)\\task\\src\\metro\\london.json"};
-
-        CommandLineUtils.handleCommandLineArgs.apply(args1)
+        new CommandLineUtils().handleCommandLineArgs(args)
                 .ifPresentOrElse(
                         file -> {
                             JsonUtils.parseJsonToMetro(file)

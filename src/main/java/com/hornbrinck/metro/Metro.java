@@ -29,7 +29,6 @@ public class Metro {
         Optional<MetroLine> line1 = getLine(lineName);
         Optional<MetroLine> line2 = getLine(lineName2);
         if (line1.isPresent() && line2.isPresent()) {
-            System.out.println("lines found");
             return route(line1.get(), stationName, line2.get(), stationName2);
         }
         return Optional.empty();
@@ -39,10 +38,7 @@ public class Metro {
             , MetroLine metroLine2, String stationName2) {
         Optional<MetroStation> station1 = metroLine1.getNode(stationName1);
         Optional<MetroStation> station2 = metroLine2.getNode(stationName2);
-        System.out.println(station1.isPresent());
-        System.out.println(station2.isPresent());
         if (station1.isPresent() && station2.isPresent()) {
-            System.out.println("stations found");
             return TraversalAlgorithm.BFS.traverse(station1.get(), station2.get());
         }
         return Optional.empty();
@@ -52,10 +48,8 @@ public class Metro {
         Optional<MetroLine> line1 = getLine(lineName);
         Optional<MetroLine> line2 = getLine(lineName2);
         if (line1.isPresent() && line2.isPresent()) {
-            //System.out.println("Line found");
             return fastestRoute(line1.get(), stationName, line2.get(), stationName2);
         }
-        //System.out.println("Line not found");
         return Optional.empty();
     }
 
